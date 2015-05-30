@@ -7,7 +7,7 @@ from gysin.markov import Markov
 class Store(restful.Resource):
     def __init__(self):
         client = MongoClient("mongodb://heroku_app37330063:5p1eoin7g4uvikko4anao29qn2@ds041432.mongolab.com:41432/heroku_app37330063")
-        self.db = client["gysin"]
+        self.db = client["heroku_app37330063"]
 
     def get(self):
         entries = self.db["entries"]
