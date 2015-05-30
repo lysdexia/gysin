@@ -6,12 +6,12 @@ $(document).ready(function() {
 	});
 
 	// if we have a songspace element, fill it
-	if ($("#songspace").length) {
+	if ($("#chainspace").length) {
 		var line = "";
 		$.get("api/chain", function(data) {
 			$.each(data, function(idx, list){
 				line = list.join(" ") + "\n";
-				$("#songspace").append(line);
+				$("#chainspace").append(line);
 			});
 		});
 	}

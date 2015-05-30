@@ -5,7 +5,21 @@
 </script>
 {% endblock %}
 {% block content %}
+<div id="wrapper">
 <form>
-	<textarea id="songspace"></textarea>
+	<div class="left">
+		<textarea id="chainspace"></textarea>
+		<br>
+		<button>MORE</button>
+		<button>CLEAR</button>
+		<button>APPEND -></button>
+	</div>
+	<div class="right">
+		<textarea id="songspace"></textarea>
+		<br>
+		<button>CLEAR</button>
+		<button>SAVE</button>
+	</div>
 </form>
+</div>
 {% endblock %}

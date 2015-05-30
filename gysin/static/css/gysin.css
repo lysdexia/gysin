@@ -1,5 +1,19 @@
 /*gysin.css*/
-#songspace {
-	width: 40em;
-	height: 50em;
+#songspace, #chainspace {
+	width: 35em;
+	height: 35em;
+	resize: none;
+}
+
+#wrapper {
+	min-width: 60em;
+	max-width: 60em;
+}
+
+.right {
+	float: right;
+}
+
+.left {
+	float: left;
 }
