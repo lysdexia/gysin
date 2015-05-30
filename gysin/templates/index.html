@@ -2,24 +2,41 @@
 {% block title %}Gysin-Style Cut-Up Generator{% endblock %}
 {% block head %}
 {{ super() }}
-</script>
 {% endblock %}
 {% block content %}
-<div id="wrapper">
-<form>
-	<div class="left">
-		<textarea id="chainspace"></textarea>
-		<br>
-		<button id="more">MORE</button>
-		<button id="chainspace-clear">CLEAR</button>
-		<button id="append">APPEND -></button>
-	</div>
-	<div class="right">
-		<textarea id="songspace"></textarea>
-		<br>
-		<button id="songspace-clear">CLEAR</button>
-		<button id="save">SAVE</button>
-	</div>
-</form>
+<h1>gysin cut up editor</h1>
+<div id="splainin">
+	<p>Gysin is a take on <a href="http://briongysin.com/">Brion Gysin's</a>
+	<a href="http://briongysin.com/?category_name=cut-up">"cut-up"</a>
+	technique. A 
+	<a href="http://en.wikipedia.org/wiki/Surrealism">Surrealist</a> method for
+	creating interesting new combinations of words and images by simply cutting 
+	paper into strips and re-arranging them until something popped out and
+	spanked one's limbic system.</p>
+
+	<p>This <a href="/editor">editor</a> uses 
+	<a href="http://en.wikipedia.org/wiki/Markov_chain">
+		Markov Chains</a> on a small database of pop-song lyrics to get a
+	similar effect. It is roumored that 
+	<a href="http://en.wikipedia.org/wiki/Duncan_Jones">Duncan Jones</a> (née 
+	Zowie Bowie) once wrote a similar program for 
+	<a href="https://www.youtube.com/watch?v=m1InCrzGIPU">David Bowie</a>, but
+	I've not been able to find any examples.  Messrs. Jones are welcome to beat 
+	me with a gunny-sack full of Sinclair ZX81s, for horking their idea, but 
+	I'm sure they are used to that by now.</p>
+
+	<p>This is not an "automatic songwriter" or any sort of artificial 
+	intelligence tool. Most of what comes out will be disjointed drivel.
+	It's a fun toy that may help you with ideas, or maybe help you through
+	a bit of writer's block. Using the output of this editor to produce actual
+	pop music will probably not be noticed, though it's definitely what
+	George Clinton was warning us about.</p>
+
+	<p>Have fun!</p>
+
 </div>
+<a href="/editor">
+	<button>make a cut-up</button>
+</a>
+
 {% endblock %}

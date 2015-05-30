@@ -73,7 +73,7 @@ $(document).ready(function() {
 
 	// save songspace
 	$("#save").click(function() {
-		alert("I ain't saving shit, yet.");
+		alert("Totally alpha, man.");
 		return false;
 	});	
 

@@ -1,18 +1,44 @@
 /*gysin.css*/
+
+a {
+	text-decoration: none;
+}
+
+h1, h2, button, #home {
+	font-family: 'Special Elite', cursive;
+}
+
 #songspace, #chainspace {
 	width: 35em;
 	height: 35em;
 	resize: none;
 }
 
-#wrapper {
-	min-width: 60em;
+#splainin, #navbar, #editor, #instructions {
 	max-width: 60em;
 }
 
-.right {
+#instructions {
+	font-size: .80em;
+	padding-left: 1em;
+	padding-top: 1em;
+}
+
+#editor {
+	min-width: 60em;
+	min-height: 35em;
+}
+
+/*save does not work yet, gray it out*/
+#save {
+	color:gray;
+}
+
+
+.right, #home {
 	float: right;
 }
+
 
 .left {
 	float: left;
