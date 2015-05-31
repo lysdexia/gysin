@@ -4,7 +4,7 @@ a {
 	text-decoration: none;
 }
 
-h1, h2, button, #home {
+h1, h2, button, #home, #poesy {
 	font-family: 'Special Elite', cursive;
 }
 
@@ -12,6 +12,16 @@ h1, h2, button, #home {
 	width: 35em;
 	height: 35em;
 	resize: none;
+}
+
+#songspace {
+	height: 30em;
+}
+
+#title, #author {
+	width: 35em;
+	height: 2em;
+	margin-bottom: 2px;
 }
 
 #splainin, #navbar, #editor, #instructions {
@@ -29,12 +39,6 @@ h1, h2, button, #home {
 	min-height: 35em;
 }
 
-/*save does not work yet, gray it out*/
-#save {
-	color:gray;
-}
-
-
 .right, #home {
 	float: right;
 }
@@ -43,3 +47,16 @@ h1, h2, button, #home {
 .left {
 	float: left;
 }
+
+#poesy {
+	margin-bottom: 1em;
+}
+
+/*
+ * hack to enable html5 form validation without actually submitting the form
+ * hidden submit input is .click()ed programatically when #save is clicked
+ */ 
+#noshow {
+	display: none;
+}
+

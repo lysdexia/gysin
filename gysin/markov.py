@@ -56,7 +56,7 @@ class Markov(object):
         lines = []
 
         if not seed:
-            chain = [random.choice(self.words.keys())]
+            chain = [self.seed()]
         else:
             chain = [seed]
 
@@ -75,4 +75,11 @@ class Markov(object):
                 line = []
                 syllables = 0
 
-        return  lines      
+        return  lines
+
+    def seed(self):
+        while True:
+            seed = random.choice(self.words.keys())
+            if seed:
+                return seed
+

@@ -6,7 +6,7 @@
 {% block content %}
 <h1>editor</h1>
 <div id="editor">
-	<form>
+	<form id="gysinform">
 		<div class="left">
 			<h2>chain</h2>
 			<textarea id="chainspace"></textarea>
@@ -17,11 +17,16 @@
 		</div>
 		<div class="right">
 			<h2>poesy</h2>
+			<input type="text" id="title" placeholder="title"></input>
+			<br>
+			<input type="text" id="author" placeholder="author"></input>
+			<br>
 			<textarea id="songspace"></textarea>
 			<br>
 			<button id="songspace-clear">clear</button>
 			<button id="save">save</button>
 		</div>
+		<input type="submit" id="noshow">
 	</form>
 </div>
 <div id="instructions">
@@ -29,6 +34,6 @@
 	<strong>"more"</strong> will add more gibberish to "chain".<br>
 	<strong>"append =&gt;"</strong> will add the contents of "chain" to the "poesy" window.<br>
 	<strong>"clear"</strong> wipes clears the window above.<br>
-	<strong>"save"</strong> does not work yet.
+	<strong>"save"</strong> save your effort and view.
 </div>
 {% endblock %}
