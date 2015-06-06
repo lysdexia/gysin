@@ -1,12 +1,30 @@
+import time
 import random
 import string
+import nltk
+nltk.download("cmudict")
+from nltk.corpus import cmudict
 
 class Markov(object):
     def __init__(self, words):
+        self.stress = cmudict.dict()
         self.words = words
         self.limit = 255
         self.vowels = "aeiou"
         self.alphanum = string.digits + string.letters + " " + "'"
+
+    def syllable_count(self, word):
+        """
+        accepts string
+        returns count of stressed syllables via cmudict
+        if string not in cmu corpora, falls back to swag
+        """
+        word = word.lower()
+        try:
+            val = self.stress[word]
+            return len([i for i in val[0] if i[-1] in string.digits])
+        except KeyError:
+            return self.swag(word)
 
     def swag(self, word):
         """
@@ -68,7 +86,7 @@ class Markov(object):
         syllables = 0
         line = []
         for word in chain:
-            syllables += self.swag(word)
+            syllables += self.syllable_count(word)
             line.append(word)
             if syllables >= 10:
                 lines.append(line)
