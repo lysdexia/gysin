@@ -2,7 +2,6 @@ import time
 import random
 import string
 import nltk
-nltk.download("cmudict")
 from nltk.corpus import cmudict
 
 class Markov(object):
