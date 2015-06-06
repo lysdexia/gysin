@@ -4,14 +4,19 @@ a {
 	text-decoration: none;
 }
 
-h1, h2, button, #home, #poesy {
+h1, h2, button, #home, #poesy, #spinnerspace {
 	font-family: 'Special Elite', cursive;
 }
 
-#songspace, #chainspace {
+#songspace, #chainspace, #spinnerspace, #bound {
 	width: 35em;
 	height: 35em;
 	resize: none;
+}
+
+#bound {
+	width: 25em;
+	height: 25em;
 }
 
 #songspace {
