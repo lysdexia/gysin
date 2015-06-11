@@ -17,7 +17,7 @@ $(document).ready(function() {
 			appId: '1446864582299246',
 			version: 'v2.3'
 		});
-		$('#loginbutton,#feedbutton').removeAttr('disabled');
+		$('#likebutton, #sharebutton, #loginbutton, #feedbutton').removeAttr('disabled');
 		FB.getLoginStatus(updateStatusCallback);
 	});
 });
