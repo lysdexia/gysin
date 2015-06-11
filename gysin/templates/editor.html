@@ -5,23 +5,30 @@
 {% endblock %}
 {% block content %}
 <h1>editor</h1>
-<div id="editor">
-	<form id="gysinform">
-		<div class="left">
-			<h2>chain</h2>
-			<div id="bound">
-				<div id="spinnerspace">Manifesting gibberish . . .</div>
-				<div id="chainwrap">
-					<textarea id="chainspace"></textarea>
-					<br>
-					<button id="more">more</button>
-					<button id="chainspace-clear">clear</button>
-					<button id="append">append =&gt;</button>
-				</div>
+<form id="gysinform">
+	<div id="editor">
+		<div id="instructions">
+			<strong>"chain"</strong> will start off with some intense-sounding gibberish, which you can edit.<br>
+			<strong>"more"</strong> will add more gibberish to "chain".<br>
+			<strong>"append =&gt;"</strong> will add the contents of "chain" to the "poesy" window.<br>
+			<strong>"clear"</strong> clears the window above.<br>
+			<strong>"save"</strong> save your effort and view. No provision is made for "sharing to Facebook/Twitter/Whatever", so you'll have to cut-and-paste the url into an email.
+		</div>
+
+		<h2>chain</h2>
+		<div id="bound">
+			<div id="spinnerspace">Manifesting gibberish . . .</div>
+			<div id="chainwrap">
+				<textarea id="chainspace"></textarea>
+				<br>
+				<button id="more">more</button>
+				<button id="chainspace-clear">clear</button>
+				<button id="append">append &dArr;</button>
 			</div>
 		</div>
-		<div class="right">
-			<h2>poesy</h2>
+
+		<h2>poesy</h2>
+		<div id="poesy">
 			<input type="text" id="title" placeholder="title"></input>
 			<br>
 			<input type="text" id="author" placeholder="author"></input>
@@ -30,15 +37,10 @@
 			<br>
 			<button id="songspace-clear">clear</button>
 			<button id="save">save</button>
+			<input type="submit" id="noshow">
 		</div>
-		<input type="submit" id="noshow">
+
 	</form>
 </div>
-<div id="instructions">
-	<strong>"chain"</strong> will start off with some intense-sounding gibberish, which you can edit.<br>
-	<strong>"more"</strong> will add more gibberish to "chain".<br>
-	<strong>"append =&gt;"</strong> will add the contents of "chain" to the "poesy" window.<br>
-	<strong>"clear"</strong> clears the window above.<br>
-	<strong>"save"</strong> save your effort and view. No provision is made for "sharing to Facebook/Twitter/Whatever", so you'll have to cut-and-paste the url into an email.
-</div>
+
 {% endblock %}

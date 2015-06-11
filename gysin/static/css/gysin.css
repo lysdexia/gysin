@@ -8,6 +8,10 @@ h1, h2, button, #home, #poesy, #spinnerspace {
 	font-family: 'Special Elite', cursive;
 }
 
+#editor {
+	margin-left: 20px;
+}
+
 #songspace, #chainspace, #spinnerspace, #bound {
 	width: 35em;
 	height: 35em;
@@ -15,8 +19,12 @@ h1, h2, button, #home, #poesy, #spinnerspace {
 }
 
 #bound {
-	width: 25em;
-	height: 25em;
+	/* need the exta to pad out the bottom */
+	height: 38em;
+}
+
+#chainspace {
+	margin-bottom: 1em;
 }
 
 #songspace {
@@ -39,22 +47,12 @@ h1, h2, button, #home, #poesy, #spinnerspace {
 	padding-top: 1em;
 }
 
-#editor {
-	min-width: 60em;
-	min-height: 35em;
-}
-
-.right, #home {
+#home {
 	float: right;
 }
 
 
-.left {
-	float: left;
-}
-
 #poesy {
-	margin-bottom: 1em;
 }
 
 /*

@@ -1,3 +1,5 @@
+
+/*
 var updateStatusCallback = function (response) {
 	if (response.status === "connected") {
 		var uid = response.authResponse.userID;
@@ -21,6 +23,7 @@ $(document).ready(function() {
 		FB.getLoginStatus(updateStatusCallback);
 	});
 });
+*/
 
 
 window.fbAsyncInit = function() {
