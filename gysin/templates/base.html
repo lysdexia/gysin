@@ -12,8 +12,17 @@
 		{% endblock %}
 	</head>
 	<body>
+		<script type="text/javascript" src="{{ url_for("static", filename="js/lib/facebook.js") }}"></script>
 		<div id="navbar"><a id="home" href="/">home</a></div>
 		{% block content %}{% endblock %}
-		{% block footer %}{% endblock %}
+		{% block footer %}
+		<br>
+		<div
+			class="fb-like"
+			data-share="true"
+			data-width="450"
+			data-show-faces="true">
+		</div>
+		{% endblock %}
 	</body>
 </html>
