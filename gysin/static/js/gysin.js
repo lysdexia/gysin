@@ -68,6 +68,7 @@ function saveSongSpace () {
 };
 
 $(document).ready(function() {
+	$("#poesy").hide();
 
 	// use html5 form validation 
 	// there is some trickery in "save" below, since we don't actually
@@ -96,6 +97,8 @@ $(document).ready(function() {
 
 	// append button tacks chainspace text onto songspace text
 	$("#append").click(function() {
+		$("#bound").hide();
+		$("#poesy").show();
 		appendSongSpace();
 		return false;
 	});

@@ -12,15 +12,15 @@ h1, h2, button, #home, #poesy, #spinnerspace {
 	margin-left: 20px;
 }
 
-#songspace, #chainspace, #spinnerspace, #bound {
+#songspace, #chainspace, #spinnerspace, #bound, #poesy {
 	width: 35em;
 	height: 35em;
 	resize: none;
 }
 
-#bound {
+#bound, #poesy {
 	/* need the exta to pad out the bottom */
-	height: 38em;
+	height: 40em;
 }
 
 #chainspace {
@@ -49,10 +49,6 @@ h1, h2, button, #home, #poesy, #spinnerspace {
 
 #home {
 	float: right;
-}
-
-
-#poesy {
 }
 
 /*
