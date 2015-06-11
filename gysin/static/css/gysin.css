@@ -9,30 +9,25 @@ h1, h2, button, #home, #poesy, #spinnerspace {
 }
 
 #editor {
-	margin-left: 20px;
+	margin-left: 1em;
 }
 
-#songspace, #chainspace, #spinnerspace, #bound, #poesy {
-	width: 35em;
-	height: 35em;
+#songspace, #chainspace, #spinnerspace, #bound, #poesy, #title, #author {
+	width: 25em;
+	height: 20em;
 	resize: none;
 }
 
 #bound, #poesy {
 	/* need the exta to pad out the bottom */
-	height: 40em;
+	height: 30em;
 }
 
 #chainspace {
 	margin-bottom: 1em;
 }
 
-#songspace {
-	height: 30em;
-}
-
 #title, #author {
-	width: 35em;
 	height: 2em;
 	margin-bottom: 2px;
 }

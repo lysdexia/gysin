@@ -95,8 +95,8 @@ $(document).ready(function() {
 		return false;
 	});
 
-	// append button tacks chainspace text onto songspace text
-	$("#append").click(function() {
+	// copy button tacks chainspace text onto songspace text prior to publishing
+	$("#save").click(function() {
 		$("#bound").hide();
 		$("#poesy").show();
 		appendSongSpace();
@@ -109,12 +109,6 @@ $(document).ready(function() {
 		return false;
 	});	
 
-	// clear songspace
-	$("#songspace-clear").click(function() {
-		$("#songspace").val("");
-		return false;
-	});	
-
 	// save songspace
 	// included bletcherous hack to enable html5 form validation without
 	// actually submitting the form.
@@ -123,7 +117,7 @@ $(document).ready(function() {
 	// Also: for some reason jquery throws an error (at least in this case)
 	// when one actually uses the id of the form we are using checkValdidity()
 	// on. Using the numeric value of the form works without throwing an error.
-	$("#save").click(function() {
+	$("#publish").click(function() {
 		// kick off html5 validation
 		if (!$("form")[0].checkValidity()) {
 			$("#noshow").click();
