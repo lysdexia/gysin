@@ -17,8 +17,14 @@ $(document).ready(function() {
 			appId: '1446864582299246',
 			version: 'v2.3'
 		});
-		$('#likebutton, #sharebutton, #loginbutton, #feedbutton').removeAttr('disabled');
-		FB.getLoginStatus(updateStatusCallback);
+		//$('#loginbutton, #feedbutton').removeAttr('disabled');
+		//FB.getLoginStatus(updateStatusCallback);
+		FB.ui({
+			method: "share",
+			href: "//developers.facebook.com/docs/"
+		}, function(response){
+			console.log(response);
+		});
 	});
 });
 
