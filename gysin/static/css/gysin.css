@@ -8,6 +8,17 @@ h1, h2, button, #home, #poesy, #spinnerspace {
 	font-family: 'Special Elite', cursive;
 }
 
+button {
+	font-size: 1.75em;
+	border: solid black 1px;
+	background: white;
+}
+
+body {
+	margin: 1em;
+	width: 26em;
+}
+
 #editor {
 	margin-left: 1em;
 }
