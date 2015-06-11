@@ -17,19 +17,12 @@ $(document).ready(function() {
 			appId: '1446864582299246',
 			version: 'v2.3'
 		});
-		//$('#loginbutton, #feedbutton').removeAttr('disabled');
-		//FB.getLoginStatus(updateStatusCallback);
-		FB.ui({
-			method: "share",
-			href: "https://developers.facebook.com/docs/"
-		}, function(response){
-			console.log(response);
-		});
+		$('#loginbutton, #feedbutton').removeAttr('disabled');
+		FB.getLoginStatus(updateStatusCallback);
 	});
 });
 
 
-/*
 window.fbAsyncInit = function() {
 	FB.init({
 		appId: '1446864582299246',
@@ -46,4 +39,3 @@ window.fbAsyncInit = function() {
 	js.src = "//connect.facebook.net/en_US/sdk.js";
 	fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));
-*/
