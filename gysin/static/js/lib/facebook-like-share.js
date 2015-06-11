@@ -21,7 +21,7 @@ $(document).ready(function() {
 		//FB.getLoginStatus(updateStatusCallback);
 		FB.ui({
 			method: "share",
-			href: "//developers.facebook.com/docs/"
+			href: "https://developers.facebook.com/docs/"
 		}, function(response){
 			console.log(response);
 		});
