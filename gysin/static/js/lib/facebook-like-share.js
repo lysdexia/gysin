@@ -1,3 +1,29 @@
+var updateStatusCallback = function (response) {
+	if (response.status === "connected") {
+		var uid = response.authResponse.userID;
+		var accessToken = response.authResponse.accessToken;
+		console.log("they're heeeeere");
+	} else if (response.status === "not_authorized") {
+		console.log("not authenticated");
+	} else {
+		console.log("not logged on");
+	}
+};
+
+$(document).ready(function() {
+	$.ajaxSetup({ cache: true });
+	$.getScript('//connect.facebook.net/en_US/sdk.js', function(){
+		FB.init({
+			appId: '1446864582299246',
+			version: 'v2.3'
+		});
+		$('#loginbutton,#feedbutton').removeAttr('disabled');
+		FB.getLoginStatus(updateStatusCallback);
+	});
+});
+
+
+/*
 window.fbAsyncInit = function() {
 	FB.init({
 		appId: '1446864582299246',
@@ -14,3 +40,4 @@ window.fbAsyncInit = function() {
 	js.src = "//connect.facebook.net/en_US/sdk.js";
 	fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));
+*/
