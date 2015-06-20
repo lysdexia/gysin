@@ -2,6 +2,7 @@
 {% block title %}Cut-Up Generator / Editor{% endblock %}
 {% block head %}
 {{ super() }}
+<script type="text/javascript" src="{{ url_for("static", filename="js/spin.min.js") }}"></script>
 {% endblock %}
 {% block content %}
 <h1>editor</h1>
@@ -13,13 +14,14 @@
 			<strong>"clear"</strong> clears the window above.<br>
 			<strong>"save"</strong> name and claim your effort, then ...<br>
 			<strong>"publish"</strong> and view.
+			<p><button id="got-it">got it</button></p>
 		</div>
 
 		<div id="bound">
 			<h2>chain</h2>
 			<div id="spinnerspace">Manifesting gibberish . . .</div>
 			<div id="chainwrap">
-				<textarea id="chainspace"></textarea>
+				<textarea id="chainspace" name="foo"></textarea>
 				<br>
 				<button id="more">more</button>
 				<button id="chainspace-clear">clear</button>

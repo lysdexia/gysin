@@ -155,4 +155,8 @@ $(document).ready(function() {
 	var target = document.getElementById("spinnerspace");
 	var spinner = new Spinner(opts).spin(target);
 
+	$("#got-it").click(function() {
+		$("#instructions").hide();
+	});
+
 });
