@@ -27,44 +27,17 @@ function appendSongSpace () {
 	var verse = [];
 	var line = $("#songspace").val();
 	if (line) {
-		verse.push(line);
+		verse.push(line + "  ");
 	}
 	verse.push($("#chainspace").val());
 	$("#songspace").val(verse.join("\n"));
 };
 
-// save the author, title and song to db
-// redirect to "poesy" page to view your masterpiece
+// join string with double spaces to make soft returns for markdown
 function saveSongSpace () {
-
-	var data = JSON.stringify({
-		title: $("#title").val(),
-		author: $("#author").val(),
-		poesy: $("#songspace").val()
-	});
-
-	$.ajax({
-		url: "/api/store",
-		type: "POST",
-		data: data,
-		contentType: "application/json; charset=utf-8",
-		dataType: "json"
-	})
-	// when we are done and have successfully saved our magnum opus
-	// clear out the form data and redirect to the poesy page for viewing
-	.done(function(data, statusText, xhr){
-		console.log(data);
-		console.log(statusText);
-		console.log(xhr.status);
-		if (xhr.status === 201) {
-			$("#chainspace").val("");
-			$("#songspace").val("");
-			$("#title").val("");
-			$("#author").val("");
-			var url = "/poesy/"+data;
-			$(location).attr("href", url);
-		}
-	});
+	var song = $("#songspace").val();
+	song = song.split("\n");
+	$("#songspace").val("\n" + song.join("  "));
 };
 
 $(document).ready(function() {
@@ -74,7 +47,7 @@ $(document).ready(function() {
 	// there is some trickery in "save" below, since we don't actually
 	// submit the form.
 	$("#songspace").prop("required", true);
-	$("#title").prop("required", true);
+	$("#poem_title").prop("required", true);
 	$("#author").prop("required", true);
 
 	// if we have a chainspace element, fill it
@@ -95,7 +68,7 @@ $(document).ready(function() {
 		return false;
 	});
 
-	// copy button tacks chainspace text onto songspace text prior to publishing
+	// save button tacks chainspace text onto songspace text prior to publishing
 	$("#save").click(function() {
 		$("#bound").hide();
 		$("#poesy").show();
@@ -124,7 +97,7 @@ $(document).ready(function() {
 			return false;
 		}
 		saveSongSpace();
-		return false;
+		$("#noshow").click();
 	});	
 
 	// start the spinner a spinnin'
@@ -158,5 +131,4 @@ $(document).ready(function() {
 	$("#got-it").click(function() {
 		$("#instructions").hide();
 	});
-
 });

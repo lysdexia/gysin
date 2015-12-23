@@ -30,8 +30,7 @@ class Markov(object):
         Scientific wild ass guess
         count number of vowels in a word one by one
         if vowell is preceeded by another vowel don't count it
-        this is "close enough". One could do better with nltk and the
-        cmudict, but the idea is to make a cut-up, yo.
+        this is "close enough" if cmudict does not have a reference.
 
         accepts a string
         returns a count of stressed syllables
@@ -69,6 +68,12 @@ class Markov(object):
         return cnt
 
     def chain(self, seed=None):
+        """
+        chain of fool(ishnes)s
+        accept optional seed word
+        returns a list of lists, hopefully containing words that sound 
+        good together.
+        """
 
         lines = []
 
@@ -79,8 +84,8 @@ class Markov(object):
 
         for i in range(self.limit):
             k = chain[-1]
-            word = random.choice(self.words[k])
-            chain.append(random.choice(self.words[k]))
+            word = random.choice(self.words[k]).strip()
+            chain.append(word)
 
         syllables = 0
         line = []
@@ -92,11 +97,11 @@ class Markov(object):
                 line = []
                 syllables = 0
 
-        return  lines
+        return lines
 
+    # just a random word to start off with
     def seed(self):
         while True:
             seed = random.choice(self.words.keys())
             if seed:
                 return seed
-

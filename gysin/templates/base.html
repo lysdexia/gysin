@@ -27,7 +27,14 @@
 		{% endblock %}
 	</head>
 	<body>
-		<div id="navbar"><a id="home" href="/">home</a></div>
+		<div id="navbar">
+			<a class="nav" href="/">home</a>
+			{% if not session.logged_in %}
+			<a class="nav" href="/login">log in</a>
+			{% else %}
+			<a class="nav" href="/logout">log out</a>
+			{% endif %}
+		</div>
 		{% block content %}{% endblock %}
 		{% block footer %}
 		<br>

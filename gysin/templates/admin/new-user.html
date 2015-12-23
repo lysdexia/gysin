@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% block title %}Log In or Sign Up{% endblock %}
+{% block head %}
+{{ super() }}
+{% endblock %}
+{% block content %}
+<h1>Log In or Sign Up</h1>
+{% if error is defined %}
+<p>{{ error }}</p>	
+{% endif %}
+
+<form method="POST">
+	<div class="row">
+		<label for="username" class="cell">User Name: </label>
+		{% if username is defined %}
+		<input type="text" name="username" value={{ username }}></input>
+		{% else %}
+		<input type="text" name="username"></input>
+		{% endif %}
+	</div>
+
+	<div class="row">
+		<label for="password" class="cell">Password: </label>
+		<input type="password" name="password"></input><br>
+	</div>
+
+	<div class="row">
+		<label for="email" class="cell">Email: </label>
+		<input type="email" name="email"></input><br>
+	</div>
+
+	<div class="row">
+		<label for="key" class="cell">Admin Key: </label>
+		<input type="text" name="key"></input><br>
+	</div>
+
+	<div class="row">
+		<label for="role" class="cell">Role: </label>
+		<select name="role">
+				<option value="user">User</option>
+				<option value="admin">Admin</option>
+		</select>
+	</div>
+
+	<div class="row">
+		<label class="cell"></label>
+		<input type="submit" value="Log In"></input>
+	</div>
+</form>
+
+{% endblock %}

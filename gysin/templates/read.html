@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block title %}Cut-Up Generator / Read{% endblock %}
+{% block head %}
+{{ super() }}
+{% endblock %}
+{% block content %}
+<h1>{{ poem.title }}</h1>
+<h2>{{ poem.author }}</h2>
+<div class="poim">
+	{% filter markdown %}
+	{{ poem.body }}
+	{% endfilter %}
+</div>
+
+{% endblock %}

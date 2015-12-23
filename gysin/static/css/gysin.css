@@ -4,7 +4,7 @@ a {
 	text-decoration: none;
 }
 
-h1, h2, button, #home, #poesy, #spinnerspace, #saved {
+h1, h2, button, #navbar, #poesy, #spinnerspace, #saved {
 	font-family: 'Special Elite', cursive;
 }
 
@@ -53,7 +53,7 @@ body {
 	padding-top: 1em;
 }
 
-#home {
+#navbar {
 	float: right;
 }
 
