@@ -17,8 +17,7 @@
 
 		<!-- Latest compiled and minified bootstrap JavaScript -->
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-		<script type="text/javascript" src="{{ url_for("static", filename="js/gysin.js") }}"></script>
-		<script type="text/javascript" src="{{ url_for("static", filename="js/lib/facebook-like-share.js") }}"></script>
+		<script type="text/javascript" src="{{ url_for("static", filename="js/lib/spin.min.js") }}"></script>
 
 		<!-- bring the responsive noise -->
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -28,22 +27,17 @@
 	</head>
 	<body>
 		<div id="navbar">
-			<a class="nav" href="/">home</a>
+			{% block navbar %}
 			{% if not session.logged_in %}
 			<a class="nav" href="/login">log in</a>
 			{% else %}
 			<a class="nav" href="/logout">log out</a>
+			<a class="nav" href="/epic">{{ session.username }}'s saved poesy</a>
 			{% endif %}
+			{% endblock %}
 		</div>
 		{% block content %}{% endblock %}
 		{% block footer %}
-		<br>
-		<div
-			class="fb-like"
-			data-share="true"
-			data-width="450"
-			data-show-faces="true">
-		</div>
 		{% endblock %}
 	</body>
 </html>

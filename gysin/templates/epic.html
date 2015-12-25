@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block title %}Cut-Up Generator / Epics{% endblock %}
+{% block head %}
+{{ super() }}
+{% endblock %}
+{% block navbar %}
+<a href="/">home</a>
+{% endblock %}
+{% block content %}
+<h1>precious little poems</h1>
+<h2>{{ session.username }}</h2>
+<div class="poim">
+	{% for poem in poems %}
+	<a href="/read/{{ poem.id }}">
+		<div>{{ poem.title }} - {{ poem.created }}</div>
+	</a>
+		{% filter markdown %}
+		{% endfilter %}
+	{% endfor %}
+</div>
+
+{% endblock %}

@@ -2,14 +2,22 @@
 {% block title %}Cut-Up Generator / Read{% endblock %}
 {% block head %}
 {{ super() }}
+<!--load twitter button-->
+<script type="text/javascript" src="//platform.twitter.com/widgets.js"></script>
+<script type="text/javascript" src="{{ url_for("static", filename="js/lib/facebook-like-share.js") }}"></script>
+<script type="text/javascript" src="{{ url_for("static", filename="js/read.js") }}"></script>
+{% endblock %}
+{% block navbar %}
+<a href="/">home</a>
 {% endblock %}
 {% block content %}
-<h1>{{ poem.title }}</h1>
-<h2>{{ poem.author }}</h2>
+<h1 id="poem-title">{{ poem.title }}</h1>
+<h2 id="poem-author">{{ poem.author }}</h2>
 <div class="poim">
 	{% filter markdown %}
 	{{ poem.body }}
 	{% endfilter %}
 </div>
-
+<span id="twit"></span>
+<div class="fb-like" data-share="true" data-width="450" data-show-faces="true"> </div>
 {% endblock %}

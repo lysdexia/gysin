@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block title %}Gysin-Style Cut-Up Generator{% endblock %}
+{% block head %}
+{{ super() }}
+{% endblock %}
+{% block navbar %}
+{{ super() }}
+<a href="/">browse</a>
+{% endblock %}
+{% block content %}
+<h1>gysin cut up editor</h1>
+<div id="splainin">
+	<p>Gysin is a take on <a href="http://briongysin.com/">Brion Gysin's</a>
+	<a href="http://briongysin.com/?category_name=cut-up">"cut-up"</a>
+	technique: a
+	<a href="http://en.wikipedia.org/wiki/Surrealism">Surrealist</a> method for
+	creating interesting new combinations of words and images by simply cutting 
+	paper into strips and re-arranging them until something popped out and
+	spanked one's limbic system.</p>
+
+	<p>This <a href="/editor">editor</a> uses 
+	<a href="http://en.wikipedia.org/wiki/Markov_chain">
+		Markov Chains</a> on a small database of pop-song lyrics (or epic poems,
+	or fairy tales, it'll change from time to time) to get a similar effect. It
+	is roumored that 
+	<a href="http://en.wikipedia.org/wiki/Duncan_Jones">Duncan Jones</a> (née 
+	Zowie Bowie) once wrote a similar program for 
+	<a href="https://www.youtube.com/watch?v=m1InCrzGIPU">David Bowie</a>, but
+	I've not been able to find any examples.  Messrs. Jones are welcome to beat 
+	me with a gunny-sack full of Sinclair ZX81s, for horking their idea, but 
+	I'm sure they are used to it by now.</p>
+
+	<p>Play around with it. Cut away the bits you don't like, then add more.
+	If you want to save and share it, you'll need to set up an account. I am
+	far too lazy to bother selling your info.</p>
+
+	<p>Have fun!</p>
+
+</div>
+
+{% endblock %}

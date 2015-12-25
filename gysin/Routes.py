@@ -1,10 +1,12 @@
 # -*- coding: utf-8 -*-
+import uuid
 from flask import Flask, render_template, abort, request, session, redirect, url_for
 from flaskext.auth import AuthUser, permission_required, logout
 from flaskext.auth.models.sa import get_user_class
+from flask_mail import Message
 from gysin.Models import Poesy, Email
 
-def routes(app, db):
+def routes(app, db, mail):
 
     User = get_user_class(db.Model)
 
@@ -47,9 +49,9 @@ def routes(app, db):
     def index():
         return render_template("index.html");
 
-    @app.route("/editor")
-    def editor():
-        return render_template("editor.html");
+    @app.route("/what-is-this")
+    def what():
+        return render_template("what-is-this.html");
 
     @app.route("/read/<string:id>")
     def read(id):
@@ -70,6 +72,25 @@ def routes(app, db):
         session["next"] = "save"
 
         return redirect(url_for('save'))
+
+    @app.route("/signup", methods=["POST"])
+    def signup():
+        print(app.config["MAIL_USERNAME"])
+        email = request.form["email"]
+        if not email:
+            return "no email"
+
+        message = Message(
+                "Sign up for Gysin",
+                sender="doug.shawhan@gmail.com",
+                recipients = [email],
+                )
+
+        message.html = """
+        <p>how nice of you to <a href=https://gysin.com/signup/%s>sign up.</a>
+        """%str(uuid.uuid4())
+        mail.send(message)
+        return render_template("auth/signup-thanks.html", email=email)
 
     @app.route("/poesy/<string:id>")
     def poesy(poesy_id): 
@@ -99,7 +120,7 @@ def routes(app, db):
                 user = User.query.filter(User.username==username).one()
             except Exception as error:
                 return render_template(
-                        "login.html",
+                        "auth/login.html",
                         error = "Incorrect user name or password.",
                         username=username)
 
@@ -121,7 +142,7 @@ def routes(app, db):
                     return redirect(url_for(next_page))
                 return redirect(url_for("index"))
 
-        return render_template("login.html")
+        return render_template("auth/login.html")
 
     @app.route("/logout")
     def logmeout():
@@ -129,7 +150,14 @@ def routes(app, db):
         session["username"] = False
         session["logged_in"] = False
         session["next"] = None
-        return render_template("logout.html")
+        return render_template("auth/logout.html")
+
+    @permission_required(resource="create", action="poem")
+    def epic():
+        poems = Poesy.query.filter(Poesy.author==session["username"]).all()
+        print(len(poems))
+        return render_template("epic.html", poems=poems)
+    app.add_url_rule("/epic", "epic", epic)
 
     @permission_required(resource="create", action="poem")
     def save():
@@ -144,6 +172,7 @@ def routes(app, db):
                 )
         db.session.add(poem)
         db.session.commit()
-        print(poem.id)
-        return render_template("save.html", title=title, body=body);
+        
+        body = "\n\n".join(body.split("  "))
+        return render_template("save.html", body=body, title=title, id=poem.id);
     app.add_url_rule("/save", "save", save)

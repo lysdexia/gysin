@@ -1,43 +1,53 @@
 {% extends "base.html" %}
-{% block title %}Gysin-Style Cut-Up Generator{% endblock %}
+{% block title %}Gysin Cut-Up Editor{% endblock %}
 {% block head %}
 {{ super() }}
+<script type="text/javascript" src="{{ url_for("static", filename="js/gysin.js") }}"></script>
 {% endblock %}
-{% block content %}
-<h1>gysin cut up editor</h1>
-<div id="splainin">
-	<p>Gysin is a take on <a href="http://briongysin.com/">Brion Gysin's</a>
-	<a href="http://briongysin.com/?category_name=cut-up">"cut-up"</a>
-	technique: a
-	<a href="http://en.wikipedia.org/wiki/Surrealism">Surrealist</a> method for
-	creating interesting new combinations of words and images by simply cutting 
-	paper into strips and re-arranging them until something popped out and
-	spanked one's limbic system.</p>
-
-	<p>This <a href="/editor">editor</a> uses 
-	<a href="http://en.wikipedia.org/wiki/Markov_chain">
-		Markov Chains</a> on a small database of pop-song lyrics (or epic poems,
-	or fairy tales, it'll change from time to time) to get a similar effect. It
-	is roumored that 
-	<a href="http://en.wikipedia.org/wiki/Duncan_Jones">Duncan Jones</a> (née 
-	Zowie Bowie) once wrote a similar program for 
-	<a href="https://www.youtube.com/watch?v=m1InCrzGIPU">David Bowie</a>, but
-	I've not been able to find any examples.  Messrs. Jones are welcome to beat 
-	me with a gunny-sack full of Sinclair ZX81s, for horking their idea, but 
-	I'm sure they are used to it by now.</p>
-
-	<p>This is not an "automatic songwriter" or any sort of artificial 
-	intelligence tool. Most of what comes out will be disjointed drivel.
-	It's a fun toy that may help you with ideas, or maybe help you through
-	a bit of writer's block. Using the output of this editor to produce actual
-	pop music will probably not be noticed. It's definitely what
-	George Clinton was warning us about.</p>
-
-	<p>Have fun!</p>
-
+<div id="navbar">
+{% block navbar %}
+{{ super() }}
+<a href="/">browse</a><br />
+<a href="/what-is-this">what is this thing?</a><br />
+<a id="show-instructions">how does this work?</a>
+{% endblock %}
 </div>
-<a href="/editor">
-	<button>make a cut-up</button>
-</a>
+{% block content %}
+<h1>gysin cut-up machine</h1>
+<form action="/publish" method="POST">
+	<div id="editor">
+		<div id="instructions">
+			<strong>"chain"</strong> will start off with some gibberish.<br>
+			<strong>"more"</strong> will add more gibberish to "chain".<br>
+			<strong>"clear"</strong> clears the window.<br>
+			<strong>"save"</strong> name and claim your effort, then ...<br>
+			<strong>"publish"</strong> and view.
+			<p><button id="got-it">got it</button></p>
+		</div>
+
+		<div id="bound">
+			<h2>chain</h2>
+			<div id="spinnerspace">Manifesting gibberish . . .</div>
+			<div id="chainwrap">
+				<textarea id="chainspace" name="foo"></textarea>
+				<br>
+				<button id="more">more</button>
+				<button id="chainspace-clear">clear</button>
+				<button id="save">save</button>
+			</div>
+		</div>
+
+		<div id="poesy">
+			<h2>poesy</h2>
+			<input type="text" id="poem_title" name="title" placeholder="title"></input>
+			<br>
+			<textarea id="songspace" name="body"></textarea>
+			<br>
+			<button id="publish">publish</button>
+			<input type="submit" id="noshow">
+		</div>
+
+	</form>
+</div>
 
 {% endblock %}

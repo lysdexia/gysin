@@ -1,7 +1,9 @@
 aniso8601==1.0.0
+blinker==1.4
 Flask==0.10.1
 flask-appconfig==0.9.1
 Flask-Auth==0.85
+Flask-Mail==0.9.1
 Flask-Markdown==0.3
 Flask-RESTful==0.3.3
 Flask-SQLAlchemy==2.1

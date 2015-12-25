@@ -4,7 +4,7 @@ a {
 	text-decoration: none;
 }
 
-h1, h2, button, #navbar, #poesy, #spinnerspace, #saved {
+h1, h2, button, #navbar, #poesy, #spinnerspace, #saved, .poim {
 	font-family: 'Special Elite', cursive;
 }
 

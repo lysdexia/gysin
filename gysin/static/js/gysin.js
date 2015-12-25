@@ -42,6 +42,7 @@ function saveSongSpace () {
 
 $(document).ready(function() {
 	$("#poesy").hide();
+	$("#instructions").hide();
 
 	// use html5 form validation 
 	// there is some trickery in "save" below, since we don't actually
@@ -128,7 +129,11 @@ $(document).ready(function() {
 	var target = document.getElementById("spinnerspace");
 	var spinner = new Spinner(opts).spin(target);
 
+	$("#show-instructions").click(function() {
+		$("#instructions").fadeIn();
+	});
+
 	$("#got-it").click(function() {
-		$("#instructions").hide();
+		$("#instructions").fadeOut();
 	});
 });

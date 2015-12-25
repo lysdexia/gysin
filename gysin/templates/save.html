@@ -7,6 +7,11 @@
 {% block content %}
 <h1>publish</h1>
 <h2>{{ title }}</h2>
-<div>{{ body }}</div>
+<div class="poim">
+	{% filter markdown %}
+	{{ body }}
+	{% endfilter %}
+</div>
 
+<p>{{ id }}</p>
 {% endblock %}
