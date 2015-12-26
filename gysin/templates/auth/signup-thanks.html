@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %}Cut-Up Generator / Thanks For Signing Up{% endblock %}
+{% block head %}
+{{ super() }}
+{% endblock %}
+{% block navbar %}
+{{ super() }}
+<a class="nb" href="/">browse</a>
+{% endblock %}
+{% block content %}
+<h1>thanks for signing up</h1>
+<div class="poim">
+	<p>Gysin sent an email to {{ email }} with a sign-up link. You might want to go have a look.</p>
+</div>
+
+<p>{{ id }}</p>
+{% endblock %}

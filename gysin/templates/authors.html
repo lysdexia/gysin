@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block title %}Cut-Up Generator / Authors{% endblock %}
+{% block head %}
+{{ super() }}
+{% endblock %}
+{% block navbar %}
+{{ super() }}
+<a class="nb" href="/">browse</a>
+{% endblock %}
+{% block content %}
+<h1>mighty (wo)men of letters</h1>
+<div class="poim">
+	{% for author in authors %}
+	<a href="/by-author/{{ author }}">
+		<button>{{ author }}<button>
+	</a>
+	{% endfor %}
+
+{% if less %}
+<a href="/authors/{{ less.offset }}/{{ less.limit }}">
+	avast	
+	<span class="glyphicon glyphicon-hand-left"></span>
+</a>
+{% endif %}
+
+{% if more %}
+<a href="/authors/{{ more.offset }}/{{ more.limit }}">
+	<span class="glyphicon glyphicon-hand-right"></span>
+	behold
+</a>
+{% endif %}
+</div>
+{% endblock %}
