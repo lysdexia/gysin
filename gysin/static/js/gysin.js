@@ -1,5 +1,19 @@
 // gysin.js
 
+/*
+// auto-resize textarea
+$('textarea').trigger('input');
+function auto_resize(e) {
+  $(e).css({'height':'auto','overflow-y':'hidden'}).height(e.scrollHeight);
+}
+$('textarea').each(function () {
+	console.log("hi");
+	auto_resize(this);
+}).on('input', function () {
+	auto_resize(this);
+});
+*/
+
 // fill chainspace with lines of artfully arranged text
 function fillChainSpace () {
 	var chainverse = [];

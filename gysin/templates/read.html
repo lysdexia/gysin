@@ -8,11 +8,32 @@
 <script type="text/javascript" src="{{ url_for("static", filename="js/read.js") }}"></script>
 {% endblock %}
 {% block navbar %}
-<a href="/">home</a>
+{{ super() }}
+<a class="nb" href="/">browse</a>
 {% endblock %}
 {% block content %}
 <h1 id="poem-title">{{ poem.title }}</h1>
 <h2 id="poem-author">{{ poem.author }}</h2>
+{% block vote %}
+{% if session.logged_in %}
+	{% if not session.username == poem.author %}
+<div class="vote">
+	<a href="#">
+		<button>
+			ave!
+			<span class="glyphicon glyphicon-thumbs-up"></span>
+		</button>
+	</a>
+	<a href="#">
+		<button>
+			fie!
+			<span class="glyphicon glyphicon-thumbs-down"></span>
+		</button>
+	</a>
+</div>
+	{% endif %}
+{% endif %}
+{% endblock %}
 <div class="poim">
 	{% filter markdown %}
 	{{ poem.body }}

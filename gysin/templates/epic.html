@@ -4,7 +4,8 @@
 {{ super() }}
 {% endblock %}
 {% block navbar %}
-<a href="/">home</a>
+{{ super() }}
+<a class="nb" href="/">browse</a>
 {% endblock %}
 {% block content %}
 <h1>precious little poems</h1>
@@ -17,6 +18,21 @@
 		{% filter markdown %}
 		{% endfilter %}
 	{% endfor %}
+
+{% if less %}
+	<a href="/by-author/{{ author }}/{{ less.offset }}/{{ less.limit }}">
+	avast	
+	<span class="glyphicon glyphicon-hand-left"></span>
+</a>
+{% endif %}
+
+{% if more %}
+<a href="/by-author/{{ author }}/{{ more.offset }}/{{ more.limit }}">
+	<span class="glyphicon glyphicon-hand-right"></span>
+	behold
+</a>
+{% endif %}
+
 </div>
 
 {% endblock %}

@@ -6,8 +6,25 @@ from flaskext.auth.models.sa import get_user_class
 from flask_mail import Message
 from gysin.Models import Poesy, Email
 
-def routes(app, db, mail):
+def countlimit(count, offset, limit):
+    more = None
+    less = None
 
+    if count - (offset + limit) > 0:
+        more = {
+                "offset": offset + limit,
+                "limit": limit,
+                }
+
+    if offset - limit >= 0:
+        less = {
+                "offset": offset - limit,
+                "limit": limit,
+                }
+
+    return more, less
+
+def routes(app, db, mail):
     User = get_user_class(db.Model)
 
     @app.route("/admin/create", methods=["GET", "POST",])
@@ -47,7 +64,49 @@ def routes(app, db, mail):
 
     @app.route("/")
     def index():
-        return render_template("index.html");
+        return redirect(url_for("titles", offset=0, limit=5))
+
+    @app.route("/titles")
+    def enumerate_titles():
+        return redirect(url_for("titles", offset=0, limit=5))
+
+    @app.route("/titles/<int:offset>/<int:limit>")
+    def titles(offset, limit):
+        poems = Poesy.query.order_by(Poesy.id.desc())[offset:offset + limit]
+        count = Poesy.query.count()
+        more, less = countlimit(count, offset, limit)
+        return render_template("titles.html", poems=poems, more=more, less=less)
+
+    @app.route("/authors")
+    def enumerate_authors():
+        return redirect(url_for("authors", offset=0, limit=5))
+
+    @app.route("/authors/<int:offset>/<int:limit>")
+    def authors(offset, limit): 
+        authors = Email.query.with_entities(Email.username)\
+                .order_by(Email.id.desc())
+        authors = [author[0] for author in authors]
+        count = Email.query.count()
+        more, less = countlimit(count, offset, limit)
+        return render_template("authors.html", authors=authors, offset=offset, limit=limit) 
+
+    @app.route("/by-author/<string:author>")
+    def enumerate_by_author(author):
+        return redirect(url_for("by_author", author=author, offset=0, limit=5))
+
+    @app.route("/by-author/<string:author>/<int:offset>/<int:limit>")
+    def by_author(author, offset, limit): 
+        poems = Poesy.query.filter(Poesy.author==author)\
+                .order_by(Poesy.id.desc())[offset: offset + limit]
+        count = Poesy.query.filter(Poesy.author==author).count()
+        more, less = countlimit(count, offset, limit)
+        return render_template(
+                "epic.html",
+                poems=poems,
+                author=author,
+                more=more,
+                less=less,
+                )
 
     @app.route("/what-is-this")
     def what():
@@ -92,24 +151,6 @@ def routes(app, db, mail):
         mail.send(message)
         return render_template("auth/signup-thanks.html", email=email)
 
-    @app.route("/poesy/<string:id>")
-    def poesy(poesy_id): 
-        try:
-            obj = entries.find_one({"_id": ObjectId(poesy_id)})
-        except Exception as e:
-            client.close()
-            return render_template("error.html")
-
-        poesy = {
-                "title": obj["title"],
-                "author": obj["author"],
-                "datetime": obj["datetime"],
-                "poesy": "<br>".join(obj["poesy"].split("\n")),
-                }
-
-        client.close()
-        return render_template("poesy.html", poesy=poesy)
-
     @app.route("/login", methods=["GET", "POST",])
     def login():
         if request.method == "POST":
@@ -151,13 +192,6 @@ def routes(app, db, mail):
         session["logged_in"] = False
         session["next"] = None
         return render_template("auth/logout.html")
-
-    @permission_required(resource="create", action="poem")
-    def epic():
-        poems = Poesy.query.filter(Poesy.author==session["username"]).all()
-        print(len(poems))
-        return render_template("epic.html", poems=poems)
-    app.add_url_rule("/epic", "epic", epic)
 
     @permission_required(resource="create", action="poem")
     def save():

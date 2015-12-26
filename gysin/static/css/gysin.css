@@ -10,13 +10,29 @@ h1, h2, button, #navbar, #poesy, #spinnerspace, #saved, .poim {
 
 button {
 	font-size: 1.75em;
-	border: solid black 1px;
+	border: solid transparent 1px;
 	background: white;
 }
 
 body {
-	margin: 1em;
-	width: 26em;
+	margin: .5em;
+	/*width: 26em;*/
+}
+
+span.glyphicon-hand-right, span.glyphicon-hand-left {
+	font-size: 2em;
+}
+
+#navbar {
+}
+
+.nb {
+	border: solid transparent 1px;
+	margin-right: .25em;
+}
+
+.vote {
+	margin-bottom: 1em;
 }
 
 #editor {
@@ -24,7 +40,7 @@ body {
 }
 
 #songspace, #chainspace, #spinnerspace, #bound, #poesy, #title, #author {
-	width: 25em;
+	width: 100%;
 	height: 20em;
 	resize: none;
 }
@@ -51,10 +67,6 @@ body {
 	font-size: .80em;
 	padding-left: 1em;
 	padding-top: 1em;
-}
-
-#navbar {
-	float: right;
 }
 
 /*

@@ -29,14 +29,17 @@
 		<div id="navbar">
 			{% block navbar %}
 			{% if not session.logged_in %}
-			<a class="nav" href="/login">log in</a>
+			<a class="nb" href="/login">log in</a>
 			{% else %}
-			<a class="nav" href="/logout">log out</a>
-			<a class="nav" href="/epic">{{ session.username }}'s saved poesy</a>
+			<a class="nb" href="/logout">log out</a>
+			<a class="nb" href="/by-author/{{ session.username }}">{{ session.username }}'s saved poesy</a>
 			{% endif %}
 			{% endblock %}
 		</div>
-		{% block content %}{% endblock %}
+		{% block content %}
+		{% block vote %}
+		{% endblock %}
+		{% endblock %}
 		{% block footer %}
 		{% endblock %}
 	</body>
