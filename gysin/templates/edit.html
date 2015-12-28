@@ -4,12 +4,13 @@
 {{ super() }}
 <script type="text/javascript" src="{{ url_for("static", filename="js/gysin.js") }}"></script>
 {% endblock %}
+
 {% block navbar %}
 {{ super() }}
-<a class="nb" href="/">browse</a>
-<br /><a class="nb" href="/what-is-this">what is this thing?</a>
-<br /><a class="nb" id="show-instructions">how does this work?</a>
+<a class="nb" href="/what-is-this">what is this thing?</a>
+<a class="nb" id="show-instructions">how does this work?</a>
 {% endblock %}
+
 {% block content %}
 <h1>gysin cut-up machine</h1>
 <form action="/publish" method="POST">

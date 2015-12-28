@@ -3,18 +3,18 @@
 {% block head %}
 {{ super() }}
 {% endblock %}
+
 {% block navbar %}
 {{ super() }}
-<a class="nb" href="/">browse</a>
 {% endblock %}
+
 {% block content %}
 <h1>mighty (wo)men of letters</h1>
 <div class="poim">
 	{% for author in authors %}
-	<a href="/by-author/{{ author }}">
-		<button>{{ author }}<button>
-	</a>
+	<a href="/by-author/{{ author }}">{{ author }}</a><br />
 	{% endfor %}
+</div>
 
 {% if less %}
 <a href="/authors/{{ less.offset }}/{{ less.limit }}">
@@ -29,5 +29,4 @@
 	behold
 </a>
 {% endif %}
-</div>
 {% endblock %}

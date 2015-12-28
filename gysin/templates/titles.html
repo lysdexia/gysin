@@ -3,33 +3,37 @@
 {% block head %}
 {{ super() }}
 {% endblock %}
+
 {% block navbar %}
 {{ super() }}
-<a class="nb" href="/">browse</a>
 {% endblock %}
+
 {% block content %}
 <h1>by title</h1>
 <div class="poim">
 	{% for poem in poems %}
 	<div>
 		<a href="/read/{{ poem.id }}">
-			<button>{{ poem.title }} by {{ poem.author }}<button>
+			{{ poem.title }} by {{ poem.author }}
 		</a>
 	</div>
 	{% endfor %}
+</div>
 
 {% if less %}
-<a href="/titles/{{ less.offset }}/{{ less.limit }}">
-	avast	
-	<span class="glyphicon glyphicon-hand-left"></span>
+	<a href="/titles/{{ less.offset }}/{{ less.limit }}">
+		<button>avast
+			<span class="glyphicon glyphicon-hand-left"></span>
+		</button>
 </a>
 {% endif %}
 
 {% if more %}
 <a href="/titles/{{ more.offset }}/{{ more.limit }}">
-	<span class="glyphicon glyphicon-hand-right"></span>
-	behold
+	<button>
+		<span class="glyphicon glyphicon-hand-right"></span>
+		behold
+	</button>
 </a>
-</div>
 {% endif %}
 {% endblock %}

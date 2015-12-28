@@ -4,7 +4,7 @@ a {
 	text-decoration: none;
 }
 
-h1, h2, button, #navbar, #poesy, #spinnerspace, #saved, .poim {
+p, h1, h2, button, span, #navbar, #poesy, #spinnerspace, #saved, .poim {
 	font-family: 'Special Elite', cursive;
 }
 
@@ -20,7 +20,7 @@ body {
 }
 
 span.glyphicon-hand-right, span.glyphicon-hand-left {
-	font-size: 2em;
+	font-size: 1em;
 }
 
 #navbar {
@@ -78,6 +78,5 @@ span.glyphicon-hand-right, span.glyphicon-hand-left {
 }
 
 .fb-like {
-	margin-top: .5em;
 }
 

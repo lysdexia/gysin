@@ -3,13 +3,13 @@
 {% block head %}
 {{ super() }}
 {% endblock %}
+
 {% block navbar %}
 {{ super() }}
-<a class="nb" href="/">browse</a>
 {% endblock %}
+
 {% block content %}
-<h1>precious little poems</h1>
-<h2>{{ session.username }}</h2>
+<h1>{{ author }}'s precious little poems</h1>
 <div class="poim">
 	{% for poem in poems %}
 	<a href="/read/{{ poem.id }}">
@@ -18,21 +18,22 @@
 		{% filter markdown %}
 		{% endfilter %}
 	{% endfor %}
+</div>
 
 {% if less %}
 	<a href="/by-author/{{ author }}/{{ less.offset }}/{{ less.limit }}">
-	avast	
-	<span class="glyphicon glyphicon-hand-left"></span>
+		<button>avast
+			<span class="glyphicon glyphicon-hand-left"></span>
+		</button>
 </a>
 {% endif %}
 
 {% if more %}
 <a href="/by-author/{{ author }}/{{ more.offset }}/{{ more.limit }}">
-	<span class="glyphicon glyphicon-hand-right"></span>
-	behold
+	<button>
+		<span class="glyphicon glyphicon-hand-right"></span>
+		behold
+	</button>
 </a>
 {% endif %}
-
-</div>
-
 {% endblock %}

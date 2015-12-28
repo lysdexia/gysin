@@ -13,7 +13,7 @@ app.config.from_object("config")
 app.secret_key = app.config["APP_SECRET_KEY"]
 
 # add markdown filter
-Markdown(app)
+Markdown(app, extensions=["nl2br", "fenced_code", "tables",])
 
 # initialize mail
 mail = Mail(app)

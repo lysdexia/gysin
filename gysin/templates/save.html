@@ -4,9 +4,11 @@
 {{ super() }}
 <script type="text/javascript" src="{{ url_for("static", filename="js/spin.min.js") }}"></script>
 {% endblock %}
+
 {% block navbar %}
 {{ super() }}
 {% endblock %}
+
 {% block content %}
 <h1>publish</h1>
 <h2>{{ title }}</h2>

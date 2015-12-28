@@ -28,18 +28,35 @@
 	<body>
 		<div id="navbar">
 			{% block navbar %}
-			{% if not session.logged_in %}
-			<a class="nb" href="/login">log in</a>
-			{% else %}
-			<a class="nb" href="/logout">log out</a>
-			<a class="nb" href="/by-author/{{ session.username }}">{{ session.username }}'s saved poesy</a>
-			{% endif %}
+
+				{% if not request.path == "/" %}
+				<a class="nb" href="/">latest</a>
+				{% endif %}
+
+				{% if request.path == "/" %}
+				<a class="nb" href="/authors">authors</a>
+				<a class="nb" href="/titles">titles</a>
+				{% endif %}
+
+				{% if not request.path == "/edit" %}
+				<a class="nb" href="/edit">make a cut-up</a>
+				{% endif %}
+
+				{% if not session.logged_in %}
+				<a class="nb" href="/login">log in</a>
+				{% else %}
+				<a class="nb" href="/by-author/{{ session.username }}">{{ session.username }}'s saved poesy</a>
+				<a class="nb" href="/logout">log out</a>
+				{% endif %}
+
 			{% endblock %}
 		</div>
+
 		{% block content %}
-		{% block vote %}
+			{% block vote %}
+			{% endblock %}
 		{% endblock %}
-		{% endblock %}
+
 		{% block footer %}
 		{% endblock %}
 	</body>

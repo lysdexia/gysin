@@ -64,7 +64,8 @@ def routes(app, db, mail):
 
     @app.route("/")
     def index():
-        return redirect(url_for("titles", offset=0, limit=5))
+        poems = Poesy.query.order_by(Poesy.id.desc())[0:5]
+        return render_template("index.html", poems=poems)
 
     @app.route("/titles")
     def enumerate_titles():
@@ -75,8 +76,13 @@ def routes(app, db, mail):
         poems = Poesy.query.order_by(Poesy.id.desc())[offset:offset + limit]
         count = Poesy.query.count()
         more, less = countlimit(count, offset, limit)
-        return render_template("titles.html", poems=poems, more=more, less=less)
-
+        return render_template(
+                "titles.html",
+                poems=poems,
+                more=more,
+                less=less,
+                )
+   
     @app.route("/authors")
     def enumerate_authors():
         return redirect(url_for("authors", offset=0, limit=5))
@@ -84,11 +90,16 @@ def routes(app, db, mail):
     @app.route("/authors/<int:offset>/<int:limit>")
     def authors(offset, limit): 
         authors = Email.query.with_entities(Email.username)\
-                .order_by(Email.id.desc())
+                .order_by(Email.username)[offset: offset + limit]
         authors = [author[0] for author in authors]
         count = Email.query.count()
         more, less = countlimit(count, offset, limit)
-        return render_template("authors.html", authors=authors, offset=offset, limit=limit) 
+        return render_template(
+                "authors.html",
+                authors=authors,
+                more=more,
+                less=less,
+                ) 
 
     @app.route("/by-author/<string:author>")
     def enumerate_by_author(author):
@@ -100,13 +111,18 @@ def routes(app, db, mail):
                 .order_by(Poesy.id.desc())[offset: offset + limit]
         count = Poesy.query.filter(Poesy.author==author).count()
         more, less = countlimit(count, offset, limit)
+        path = "/".join(request.path.split("/")[0:3])
         return render_template(
-                "epic.html",
+                "by-author.html",
                 poems=poems,
                 author=author,
                 more=more,
                 less=less,
                 )
+
+    @app.route("/edit")
+    def edit():
+        return render_template("edit.html");
 
     @app.route("/what-is-this")
     def what():
@@ -115,7 +131,7 @@ def routes(app, db, mail):
     @app.route("/read/<string:id>")
     def read(id):
         poem = Poesy.query.filter(Poesy.id==id).first()
-        poem.body = "\n\n".join(poem.body.split("  "))
+        poem.body = "\n".join(poem.body.split("  "))
         return render_template("read.html", poem=poem);
 
     @app.route("/publish", methods=["POST",])
@@ -207,6 +223,6 @@ def routes(app, db, mail):
         db.session.add(poem)
         db.session.commit()
         
-        body = "\n\n".join(body.split("  "))
+        body = "\n".join(body.split("  "))
         return render_template("save.html", body=body, title=title, id=poem.id);
     app.add_url_rule("/save", "save", save)
